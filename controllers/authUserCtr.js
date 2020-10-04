@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 //displaying index page
 exports.getIndex = (req,res)=>{
-    if(!req.session){
+    if(!req.session.isLoggedIn){
     res.render('index',{
         pageTitle:'Dungra Tailor',
         path:'/'
