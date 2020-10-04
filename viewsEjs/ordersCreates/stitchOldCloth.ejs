@@ -1,0 +1,80 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="">
+        <div class="box col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title text-primary js-scroll-trigger" align="center">Stitch Your Old Clothes</h2>
+                    <form method="POST" action="/user/addToCartOldClothStitch" class="register-form" enctype="multipart/form-data" id="regForm">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="form-title text-primary">Image of Old Clothe</h3>
+                        <span>*Please Upload Old Saree Photo</span>
+                      </div>
+                      <div class="row" style="margin-left: 100px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <div class="row">
+                                <img src="" id="originalProduct" class="rounded design border border-info"> 
+                              </div>
+                              <div class="row">
+                                <input type="file" id="originalProductUpl3" name="originalProductUpl3" class="rounded" set-to="originalProduct" />
+                            </div>
+                            </div> 
+                          </div>      
+                          </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="form-title text-primary">Convert to what ? </h3>
+                      </div>
+                      <br/><br/>
+                      <div class="row" style="margin-left: 100px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                              <label class="container m-r-45">Cusion Covers
+                                  <input type="radio" value="Cusion Covers" name="convertCloth">
+                                  <span class="checkmark"></span>
+                              </label>
+                                              <span>*1 old saree can be converted to 3 Cousin Cover(size 20" X 12" = ₹50 each)</span>
+                            </div>
+                            <br>
+                            <div class="row">
+                            <label class="container m-r-45">Curtains
+                                <input type="radio" value="Curtains" name="convertCloth">
+                                <span class="checkmark"></span>
+                            </label>
+                                          <span>*1 old saree can be converted to 1 Curtain(size 40" X 80" = ₹100 each)</span>
+                            </div>
+                            <br/>
+                      <div class="row">
+                          <div class="col-lg-12">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: left;">
+                              <div class="form-group form-button">
+                                  <input type="submit" name="addToCart" id="addToCart" class="btn btn-info" value="Add To Cart"/>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: right;">
+                              <div class="form-group form-button">
+                                  <a href="/ordersSer"><input type="button" name="back" id="back" class="btn btn-danger" value="Back"/></a>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+
+
+
+
+
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

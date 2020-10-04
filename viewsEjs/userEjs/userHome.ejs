@@ -1,0 +1,59 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="home">
+        <div class="box col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title" style="color: #5cb85c"></h2>
+                    <form method="POST" class="register-form" id="">
+                        <div class="container">
+                            <div class="row">
+                              <div class="col-lg-3 col-md-6 col-sm-6 text-center">
+                                <div class="service-box">
+                                  <a href="/showDesigns"><i class="fa fa-4x fa-shirtsinbulk text-primary sr-icons">
+                                  <h4>See Design</h4></i></a>
+                                </div>
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-6 text-center">
+                                <div class="service-box">
+                                  <a href="/user/cart"><i class="fa fa-4x fa-shopping-cart text-primary sr-icons">
+                                  <h4>Check Cart</h4></i></a>
+                                </div>
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-6 text-center">
+                                <div class="service-box">
+                                  <a href="/userProfile"><i class="fa fa-4x fa-user text-primary sr-icons">
+                                  <h4>See Profile</h4></i></a>
+                                </div>
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-6 text-center">
+                                <div class="service-box">
+                                  <a href="User_Pickup&Delivery.html"><i class="fa fa-4x fa-truck-pickup text-primary sr-icons">
+                                  <h4>Pick-up & Delivery Address</h4></i></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="service-box">
+                                    <a class="btn btn-secondary js-scroll-trigger" href="/ordersSer">
+                                      <h5 class="">Order Now
+                                      <i class="fa fa-angle-double-right sr-icons"></i>
+                                      <i class="fa fa-angle-double-right sr-icons"></i>
+                                      <i class="fa fa-angle-double-right sr-icons"></i> 
+                                      </h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>
+

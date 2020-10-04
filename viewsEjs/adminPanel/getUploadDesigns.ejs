@@ -1,0 +1,146 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./admin_Navbar') %>
+
+<body id="page-top">
+
+    <div class="bg-danger col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="dashboard">
+            <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+                <section>
+                    <div class="container-fluid newform">
+                        <center><h2>Upload Design for Blouse/Dress</h2></center><br>
+                        <form action="/admin/postAddDesign" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <b><label for="select">1:Choose Design For:</label></b>
+                                    <select id="selectit" name="typedsg"  style="margin-left: 200px;">
+                                    <option value="default" selected>--select--</option>
+                                    <option value="bsfront">Blouse Front</option>
+                                    <option value="bsback">Blouse Back</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                  <div class="col-2">
+                                    <label style="margin-left: 15px;"><b>2:Upload New Design</b></label>
+                                  </div>      
+                                    <div class="col-2">
+                                      <input type=file name="img" id="img" class="form-control rounded" set-to="originalProduct" style="margin-top: 50px;">
+                                      <br>
+                                    </div>
+                                    <div class="col-6">
+                                    <img id="originalProduct" style="width: 150px;
+                                    margin-left: 100px;
+                                  height: 150px; border: 1px solid rgb(3, 28, 247); 
+                                  border-radius: 4px;
+                                   padding: 5px" src="#" alt=""/>
+                                    </div>
+                                    
+                                    
+                                    
+                            </div>
+                            </div>
+                            <div class="form-group">
+                              <label><b>3:Design Name:</b></label>
+                              <input type="text" name="imgname" style="margin-left: 200px;" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label><b>4:Rate:</b></label>
+                                <input type="text" name="imgrate" style="margin-left: 200px;" class="form-control">
+                            </div>
+                  
+                            <div class="justify-content-center">
+                              <center><button type="submit" class="btn btn-primary">Upload</button></center>
+                            </div>
+                          </form>
+                    </div>
+                </section>
+                <div class="container">
+                    <section>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 float-left">
+                           <center> <h3>Design for Blouse Front</h3></center>
+                                <div style="width: 400px; height: 400px; overflow-x:scroll; padding: 5px; display:inline-block;" >   
+                                    <div id="slider" class="text-center">
+                                        <% if (desg.length>0) { %>
+                                        <div class="slide-img gally">
+                                            <% for (let design of desg) { %>
+                                                <% if(design.typeDeg==="bsfront") {%>
+                                                <img class="img-fluid img-thumbnail" style="width: 300px; height: 300px;"
+                                                 src="/<%= design.designImageUrl %>" alt="<%= design.designImageName %>">
+                                                 <p style="font-weight: bold;"><%= design.designImageName%></p>
+                                                 <p>Base price + <%= design.designImageRate%>
+                                                  <form action="/admin/postDeleteDesign" method="POST">
+                                                    <input type="hidden" name="designToDelete" id="designToDelete" value="<%= design._id %>">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                  </form>
+                                                  </p>
+                                                      <hr class="rounded">
+                                                      <% }else{ continue %>
+                                                      <% } %>
+                                                <% } %>
+                                        </div>
+                                      
+                                        <% } else { %>
+                                            <h1>No Design Found!</h1>
+                                            <% } %>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 float-left">
+                        <center> <h3>Design for Blouse Back</h3></center>
+                             <div style="width: 400px; height: 400px; overflow-x:scroll; padding: 5px; display:inline-block;" >   
+                                 <div id="slider" class="text-center">
+                                     <% if (desg.length>0) { %>
+                                     <div class="slide-img gally">
+                                         <% for (let design of desg) { %>
+                                             <% if(design.typeDeg==="bsback") {%>
+                                             <img class="img-fluid img-thumbnail" style="width: 300px; height: 300px;"
+                                              src="/<%= design.designImageUrl %>" alt="<%= design.designImageName %>">
+                                              <p style="font-weight: bold;"><%= design.designImageName%></p>
+                                              <p>Base price + <%= design.designImageRate%>
+                                                <form action="/admin/postDeleteDesign" method="POST">
+                                                  <input type="hidden" name="designToDelete" id="designToDelete" value="<%= design._id %>">
+                                                 <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                              </p>
+                                                   <hr class="rounded">
+                                                   <% }else{ continue %>
+                                                   <% } %>
+                                             <% } %>
+                                     </div>
+                                   
+                                     <% } else { %>
+                                         <h1>No Design Found!</h1>
+                                         <% } %>
+                                 </div>
+                             </div>
+                    </div>
+                </section>
+                <br><br>
+                </div>
+                <script>
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                      var reader = new FileReader();
+                      
+                      reader.onload = function(e) {
+                        $('#blah1').attr('src', e.target.result);
+                      }
+                      reader.readAsDataURL(input.files[0]); // convert to base64 string
+                    }
+                  }
+                  
+                  $("#img").change(function() {
+                    readURL(this);
+                  });
+                </script>
+
+
+            </div>
+        </section>
+    </div>    
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/end.ejs') %>

@@ -1,0 +1,54 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="home"> 
+       <% if (desg.length>0) { %>
+           <div class="grid_sagar">
+               <% for (let design of desg) { %>
+                   <article class="card_sagar product-item_sagar">
+                       <div class="card__image_sagar">
+                           <img src="/<%= design.designImageUrl %>"
+                               alt="<%= design.imgname %>">
+                       </div>
+                       <div class="card__header_sagar">
+                         <h1 class="product__title_sagar"><%= design.designImageName %></h1>
+                       </div>
+                       <div class="card__content_sagar">
+                           <h6 class="product__price_sagar">Base Price + <br/>₹<%= design.designImageRate %></h6>
+                       </div>
+                   </article>
+               <% } %>
+
+           </div>
+       <% } else { %>
+           <h1>No Products Found!</h1>
+       <% } %>
+    </section>
+    <section  class="pagination_sagar">
+        <% if(currentPage !==1 && previousPage !==1) {%>
+     <a href="/showDesigns?page=1">1</a>
+      <% } %>
+      <% if(hasPreviousPage){ %>
+        <a href="/showDesigns?page=<%= previousPage %>"><%= previousPage %></a>
+        <% } %>
+    
+    
+      <a href="/showDesigns?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+     
+    
+      <% if(hasNextPage){ %>
+        <a href="/showDesigns?page=<%= nextPage %>"><%= nextPage %></a>
+        <% } %>
+        <% if(lastPage !== currentPage && nextPage != lastPage) { %>
+        <a href="/showDesigns?page=<%= lastPage %>"><%= lastPage %></a>
+        <% } %>
+    
+    </section> 
+</div> 
+  
+
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

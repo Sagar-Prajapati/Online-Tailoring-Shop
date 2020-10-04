@@ -1,0 +1,89 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./tailorNavbar') %>
+<body id="page-top">
+    <div class="bg-info col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="Dashboard">
+            <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="all-content">
+                    <div class="all-form">
+                        <h2 class="form-title text-info"></h2>
+                        <form method="POST" class="register-form" id="">
+                            <form method="POST" class="" id="">
+                           <div class="card col-lg-12 col-md-12 col-sm-12 col-12 scroll part">
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger">Allocated Order</h4>
+                                    <table class="table table-bordered" id="order">
+                                      <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>Order ID</th>
+                                          <th>Service Name</th>
+                                          <th>Date Of Order</th>
+                                          <th>Description</th>
+                                          <th>Refrence Image</th>
+                                          <th>Total Rate</th>
+                                          <th>Allocated Delivery Boy</th>
+                                          <th class="text-success">Accept</th>
+                                          <th class="text-danger">Reject</th>
+                                        </tr>  
+                                      </thead>
+
+                                      <% if (getOrd.length) { %>
+                                        <tbody>
+                                          <tr>
+                                          <% getOrd.forEach(function (orders, index) { %>
+                                          <td><%= index + 1 %></td>
+                                          <td><%= orders._id %></td>
+                                          <td><%= orders.orderService %></td>
+                                          <td><%= orders.orderDate %></td>
+                                          <td>
+                                            <% if(orders.orderService==="Blouse") {%>
+                                              front deisgn <img style="width: 60px;height: 60px;" src="/<%= orders.orderedFrontDesign.designImageUrl %>" alt="">
+                                             <br> back design <img style="width: 60px;height: 60px;" src="/<%= orders.orderedBackDesign.designImageUrl %>" alt="">
+                                            <% } else if(orders.orderService==="Pico/Fall"){ %>
+                                            <p></p>
+                                            <% } else if(orders.orderService==="Stitch Old Cloth"){ %>
+                                            <p></p>
+                                            <% } %>
+                                          </td>
+                                          <td class="cart_design">
+                                            <img style="width: 60px;height: 60px;" src="/<%= orders.refrenceSareeImg %>" alt="">
+                                          </td>
+                                          <td><span>&#8377 </span><%= orders.orderTotalRate %></td>
+                                          <% if(orders.allocatedServiceMan==="YES"){ %>
+                                          <th><%= orders.delPersonAllocated.firstName %><br>(<%= orders.delPersonAllocated._id %>)</th>
+                                          <td><a href="/tailor/acceptOrders?id=<%= orders._id  %>"><i class="fa fa-check fa-1x text-success"></i></a></td>
+                                          <td><a href="/tailor/rejectOrders?idR=<%= orders._id  %>" ><i class="fa fa-trash fa-1x text-danger"></i></a></td></td>
+                                            <% } else { %>
+                                          <th>NA</th>
+                                          <th>NA</th>
+                                          <td></td>
+                                          <td><a href="/tailor/rejectOrders?idR=<%= orders._id  %>"><i class="fa fa-trash fa-1x text-danger"></i></a></td></td>
+                                              <% } %>
+                                        </tr>
+                                        <% } )%>
+                                      </tbody>
+                                      <% }else{%>
+                                        <tbody><tr>
+                                          <td colspan="12"><h5>No Order Yet</h5></td>
+                                        </tr></tbody>
+                                        <% } %> 
+                                    </table>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>    
+
+
+
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

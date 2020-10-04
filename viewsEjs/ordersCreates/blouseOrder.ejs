@@ -1,0 +1,190 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="">
+        <div class="box col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title text-primary" align="center">Blouse Stitching</h2>
+                    <div class="register-form" id="regForm">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="form-title text-primary">Choose Design</h3>
+                         <span>base rate for blouse stitching is ₹100(excluding designs rate)</span>
+                      </div>
+                      <div class="row" style="margin-left: 100px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+
+                      <div>
+                         <form action="/blouseOrder/selFrontDesign" method="GET">
+                          <div class="col-lg-6 col-md-6 col-sm-6" style="float: left;">                          
+                            <div class="row">
+                              <input type="hidden" name="frontSelectedDesignId" value="<%= frontSelectedDesignId %>" />
+                              <input type="hidden" name="backSelectedDesignId" value="<%= backSelectedDesignId %>" />
+                              <input type="hidden" name="frontSelectedDesign" value="<%= frontSelectedDesign %>" />
+                              <input type="hidden" name="backSelectedDesign" value="<%= backSelectedDesign %>" />
+                              <img src="/<%= frontSelectedDesign %>"
+                              class="rounded design border border-info" name="frontSelectedDesignImage"  form="frontDesignForm" alt="Please Select Design"> 
+                            </div>    
+                            <div class="row">
+                              <button class="btn btn-info btndesign" type="submit" ><span class="fa fa-upload" > FRONT DESIGN</span></button>
+                            </div>
+                          </div>
+                         </form>
+                        </div>
+
+                        <div>
+                         <form action="/blouseOrder/selBackDesign" method="GET" >    
+                            <div class="col-lg-6  col-md-6 col-sm-6" style="float: right;">
+                              <div class="row">
+                                <input type="hidden" name="frontSelectedDesignId" value="<%= frontSelectedDesignId %>" />
+                                <input type="hidden" name="backSelectedDesignId" value="<%= backSelectedDesignId %>" />
+                                <input type="hidden" name="frontSelectedDesign" value="<%= frontSelectedDesign %>" />
+                                <input type="hidden" name="backSelectedDesign" value="<%= backSelectedDesign %>" />  
+                                <img src="/<%= backSelectedDesign %>" name="backSelectedDesignImage"
+                                  class="rounded design border border-info" form="backDesignForm" alt="Please Select Design"> 
+                              </div>
+                              <div class="row">
+                                <button class="btn btn-info btndesign" type="submit"><span class="fa fa-upload" > BACK DESIGN</span></button>
+                              </div>
+                            </div>
+                         </form>
+                        </div>                    
+                        </div>
+                      </div>
+
+                      <!-- Measurement -->
+                      <form action="/user/addToCartBlouse" method="POST" id="finalSubmit" enctype="multipart/form-data">
+                        <input type="hidden" name="frontSelectedDesignImageId" value="<%= frontSelectedDesignId %>" />
+                        <input type="hidden" name="backSelectedDesignImageId" value="<%= backSelectedDesignId %>" />
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="form-title text-primary">Select Measurement</h3>
+                      </div>
+                      <div class="row" style="margin-left: 100px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <!-- 1 -->
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <div class="input-group">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <label class="radio-container m-r-45">Use my Exiting Fited Garment for measurements
+                                      <input type="radio" name="Measurement" id="userfit" value="userfit" onchange="Next()">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- 2 -->
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <div class="input-group">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <label class="radio-container m-r-45">Select from standard size
+                                      <input type="radio" name="Measurement" id="stdsize" value="stdsize"  onchange="Next()">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- 3 -->
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <div class="input-group">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <label class="radio-container m-r-45">Send Tailor at our home to take measurements
+                                      <input type="radio" name="Measurement" id="sendtailor" value="sendtailor" onchange="Next()">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="userfitbox" class="border border-primary" style="display: none;">
+                          <h5 class="text text-primary">Upload Your fits Photo for reference</h5>
+                          <div>
+                            <img src="" id="uploadfit">
+                            <input type="file" id="FileUpload1" name="FileUpload1" set-to="uploadfit" form="finalSubmit" class="rounded" multiple/>
+                          </div>
+                        </div>
+                        <div id="stdsizebox" class="border border-primary" style="display: none;">
+                          <h5 class="text text-primary">Select Size</h5>
+                          <div>
+                            <select name="stndSize" id="stndSize" class="dropdown form-control">
+                              <option>Select</option>
+                              <option value="size28">28</option>
+                              <option value="size30">30</option>
+                              <option value="size32">32</option>
+                              <option value="size34">34</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div id="sendtailorbox" class="border border-primary" style="display: none;">
+                          <h5 class="text text-primary">Select Date & Time slot at which our tailor come to your home</h5>
+                          <div>
+                            <input type="date" name="userSelectedDate" id="userSelectedDate">
+                          </div>
+                          <div>
+                            <select class="dropdown form-control" name="userTimeSlot" id="userTimeSlot">
+                              <option>Select</option>
+                              <option value="8to11">8am - 11am</option>
+                              <option value="11to2">11am - 2pm</option>
+                              <option value="2to5">2pm - 5pm</option>
+                              <option value="5to8">5pm - 8pm</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h3 class="form-title text-primary">Upload Your Original Clothes</h3>
+                          </div>
+                          <div class="row" style="margin-left: 100px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <div class="col-lg-6 col-md-6 col-sm-6" style="float: left;">
+                                <div class="row">
+                                  <img src="" id="originalProduct" class="rounded design border border-info" alt="Please Select Design"> 
+                                </div>
+                                <div class="row">
+                                    <input type="file" id="originalProductUpl" name="originalProductUpl" form="finalSubmit" class="rounded" set-to="originalProduct" multiple />
+                                </div>
+                              </div>      
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: left;">
+                                <div class="form-group form-button">
+                                    <input type="submit" name="AddToCart" id="AddToCart" class="btn btn-info" value="Add To Cart"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: right;">
+                                <div class="form-group form-button">
+                                    <a href="/ordersSer"><input type="button" name="back" id="back" class="btn btn-danger" value="Back"/></a>
+                                </div>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+
+
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

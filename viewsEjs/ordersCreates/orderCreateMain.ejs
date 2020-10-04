@@ -1,0 +1,81 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="">
+        <div class="box col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title text-primary"></h2>
+                    <% if (updateMessage) { %>
+                      <div class="user-message user-message--update"><%= updateMessage %></div>
+                  <% } %>
+                    <form method="POST" action="/requestedService" class="register-form" id="regForm">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                              <h2 class="form-title text-primary">Select Service</h2>
+                              <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                  <div class="input-group">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <label class="radio-container m-r-45">Blouse Stitching
+                                            <input type="radio" checked="checked" value="SelBlouse" id="blousestitch" name="Service">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                      </div>  
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                  <div class="input-group">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <label class="radio-container">Fall & Pico Bidding
+                                            <input type="radio" id="fall_pico" value="SelFallPico" name="Service">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                      </div>  
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                  <div class="input-group">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <label class="radio-container">Fix Old Clothe
+                                            <input type="radio" id="fixoldclothe" value="SelOld" name="Service">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                      </div>  
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                      <div class="row ">
+                          <div class="col-lg-12 " id="orderbtn">
+                              <div style="overflow:auto;">
+                                <div style="float:right;">
+                                  <a href="/getUserHome"><button type="button" class="btn btn-danger">Back</button></a>
+                                  <button type="submit" id="nextBtn" class="btn btn-primary">Next</button>
+                                </div>
+                              </div>
+
+                          </div>
+                      </div>   
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+
+
+
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

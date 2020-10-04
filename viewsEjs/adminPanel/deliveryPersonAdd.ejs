@@ -1,0 +1,172 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./admin_Navbar') %>
+
+<body id="page-top">
+
+    <div class="bg-danger col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="dashboard">
+            <% if (errorMessage) { %>
+                <div class="user-message user-message--error"><%= errorMessage %></div>
+            <% } %>
+            <% if (updateMessage) { %>
+                <div class="user-message user-message--update"><%= updateMessage %></div>
+            <% } %>
+            <div class="box col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="all-content">
+                    <div class="all-form">
+                        <h2 class="form-title text-danger">Add New Delivery Agent</h2>
+                        <form method="POST" action="/admin/addingDelPerson" class="register-form" id="addingForm">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-user fa-1x"></i></label>
+                                        <input type="text" name="firstname" id="fname" placeholder="First Name" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-user fa-1x"></i></label>
+                                        <input type="text" name="lastname" id="lname" placeholder="Last Name"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="input-group">
+                                        <label for="name"><i class="fa fa-calendar-alt fa-1x"></i></label>
+                                        <input type="Date" name="birthdate" id="dob" placeholder="Date of Birth"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="input-group">
+                                        <div class="col-lg-6">
+                                            <label for="name"><i class="fa fa-male fa-1x"></i></label>
+                                            <label class="radio-container m-r-45">Male
+                                                <input type="radio" checked="checked" value="male" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <label for="name"><i class="fa fa-female fa-1x"></i></label>
+                                            <label class="radio-container">Female
+                                                <input type="radio" name="gender" value="female">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-address-card fa-1x"></i></label>
+                                        <input type="text" name="address" id="address" placeholder="Address" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-city fa-1x"></i></label>
+                                        <select name="city" id="city" class="form-control">
+                                            <option selected="true">Select City</option>
+                                            <option value="Vapi">Vapi</option>
+                                            <option value="Surat">Surat</option>
+                                            <option value="Vadodara">Vadodara</option>
+                                            <option value="Ahmedabad">Ahmedabad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                       <select name="state" id="state" class="form-control">
+                                        <option selected="true">Select State</option>
+                                      <!---  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                        <option value="Daman and Diu">Daman and Diu</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Lakshadweep">Lakshadweep</option>
+                                        <option value="Puducherry">Puducherry</option>
+                                        <option value="Goa">Goa</option>-->
+                                        <option value="Gujarat">Gujarat</option>
+                                      <!---  <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>-->
+                                      </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-map-pin fa-1x"></i></label>
+                                        <input type="text" name="pincode" id="pincode" placeholder="Pincode"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-map-pin fa-1x"></i></label>
+                                        <input type="text" name="email" id="email" placeholder="Email"  onfocusout="validateEmail(this);"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name"><i class="fa fa-phone-alt fa-1x"></i></label>
+                                        <input type="text" name="contact" id="contact" placeholder="Contact Number" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-2 col-md-2 col-sm-0 col-0">
+                              </div>
+                              <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                                  <div class="form-group form-button">
+                                      <input type="submit" name="addDetails" id="addDetails" class="btn btn-success" value="Add"/>
+                                  </div>
+                              </div>
+                              <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                                  <div class="form-group form-button">
+                                      <input type="button" name="back" id="back" class="btn btn-danger" value="Back" onclick="location.href='/admin/deliveryPersonDetails'"/>
+                                  </div>
+                              </div>
+                              <div class="col-lg-2 col-md-2 col-sm-0 col-0">
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>    
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/end.ejs') %>

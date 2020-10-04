@@ -1,0 +1,139 @@
+<!--<div class="container">
+    <section>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 float-left">
+           <center> <h3>Design for Blouse Front</h3></center>
+                <div style="width: 550px; height: 350px; overflow-x:scroll; padding: 5px; display:inline-block;" >   
+                    <div id="slider" class="text-center">
+                        <% if (desg.length>0) { %>
+                        <div class="slide-img gally">
+                            <% for (let design of desg) { %>
+                                <% if(design.typedsg==="bsfront") {%>
+                                <img class="img-fluid img-thumbnail" style="width: 450px; height: 250px;"
+                                 src="/<%= design.img %>" alt="<%= design.imgname %>">
+                                 <p style="font-weight: bold;"><%= design.imgname%></p>
+                                 <p>Base price + <%= design.imgrate%> 
+                                    <button type="submit" class="btn btn-danger">Delete</button></p>
+                                      <hr class="rounded">
+                                      <% }else{ continue %>
+                                      <% } %>
+                                <% } %>
+                        </div>
+                      
+                        <% } else { %>
+                            <h1>No Products Found!</h1>
+                            <% } %>
+                    </div>
+                </div>
+    </div>
+    <div class="col-lg-6 col-sm-12 float-left">
+        <center> <h3>Design for Blouse Back</h3></center>
+             <div style="width: 550px; height: 350px; overflow-x:scroll; padding: 5px; display:inline-block;" >   
+                 <div id="slider" class="text-center">
+                     <% if (desg.length>0) { %>
+                     <div class="slide-img gally">
+                         <% for (let design of desg) { %>
+                             <% if(design.typedsg==="bsback") {%>
+                             <img class="img-fluid img-thumbnail" style="width: 450px; height: 250px;"
+                              src="/<%= design.img %>" alt="<%= design.imgname %>">
+                              <p style="font-weight: bold;"><%= design.imgname%></p>
+                              <p>Base price + <%= design.imgrate%> <button type="submit" 
+                                 class="btn btn-danger">Delete</button></p>
+                                   <hr class="rounded">
+                                   <% }else{ continue %>
+                                   <% } %>
+                             <% } %>
+                     </div>
+                   
+                     <% } else { %>
+                         <h1>No Products Found!</h1>
+                         <% } %>
+                 </div>
+             </div>
+    </div>
+</section>
+<br><br>
+<section>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 float-left">
+            <center> <h3>Design for Dress Front</h3></center>
+                 <div style="width: 550px; height: 350px; overflow-x:scroll; padding: 5px; display:inline-block;" >   
+                     <div id="slider" class="text-center">
+                         <% if (desg.length>0) { %>
+                         <div class="slide-img gally">
+                             <% for (let design of desg) { %>
+                                 <% if(design.typedsg==="dsfront") {%>
+                                 <img class="img-fluid img-thumbnail" style="width: 450px; height: 250px;"
+                                  src="/<%= design.img %>" alt="<%= design.imgname %>">
+                                  <p style="font-weight: bold;"><%= design.imgname%></p>
+                                  <p>Base price + <%= design.imgrate%> <button type="submit" 
+                                     class="btn btn-danger">Delete</button></p>
+                                       <hr class="rounded">
+                                       <% }else{ continue %>
+                                       <% } %>
+                                 <% } %>
+                         </div>
+                       
+                         <% } else { %>
+                             <h1>No Products Found!</h1>
+                             <% } %>
+                     </div>
+                 </div>
+     </div>
+     <div class="col-lg-6  col-sm-12 float-left">
+         <center> <h3>Design for Dress Back</h3></center>
+              <div style="width: 550px; height: 350px; overflow-x:scroll; padding: 5px; display:inline-block;" >   
+                  <div id="slider" class="text-center">
+                      <% if (desg.length>0) { %>
+                      <div class="slide-img gally">
+                          <% for (let design of desg) { %>
+                              <% if(design.typedsg==="dsback") {%>
+                              <img class="img-fluid img-thumbnail" style="width: 450px; height: 250px;"
+                               src="/<%= design.img %>" alt="<%= design.imgname %>">
+                               <p style="font-weight: bold;"><%= design.imgname%></p>
+                               <p>Base price + <%= design.imgrate%> <button type="submit" 
+                                  class="btn btn-danger">Delete</button></p>
+                                    <hr class="rounded">
+                                    <% }else{ continue %>
+                                    <% } %>
+                              <% } %>
+                      </div>
+                      <% } else { %>
+                          <h1>No Products Found!</h1>
+                          <% } %>
+                  </div>
+              </div>
+            </div>
+        </div>
+</section>
+</div>-->
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+mongoose.connect(MONGODB_URI,
+    {useNewUrlParser:true,useUnifiedTopology:true})
+    .then(()=>{
+        const server = app.listen(PORT);
+        const io = require('socket.io')(server);
+        io.on('connection',socket=>{
+            console.log('Client Connected');
+        });
+        console.log('connected at post '+PORT);
+    }).catch(err=>{console.log(err)});
+
+
+
+    ////////////////////////////////////////////////////////////////////
+
+     <a class="nav-link js-scroll-trigger" style="color: #eb1e4a;margin-left: 20px;"><%= loggedUserName %></a>
+
+      <span class="badge badge-warning" id="lblCartCount">
+                <% if (typeof  cartNum !== "undefined") { %>
+                <%= cartNum.length %>
+                <% } else {%>
+                0
+                <% } %>
+              </span>

@@ -1,0 +1,60 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./admin_Navbar') %>
+
+<body id="page-top">
+
+    <div class="bg-danger col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="dashboard">
+            <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="all-content">
+                    <div class="all-form">
+                        <h2 class="form-title text-danger">Customer Details</h2>
+                        <form method="POST" class="register-form" id="">
+                          <div class="scroll">
+                            <table class="table" style="overflow-x:auto;">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">First Name</th>
+                                  <th scope="col">Last Name</th>
+                                  <th scope="col">Gender</th>
+                                  <th scope="col">Contact</th>
+                                  <th scope="col">City</th>
+                                  <th scope="col">State</th>
+                                  <th scope="col"><i class="fa fa-info-circle fa-1x"></i></th>
+                                </tr>
+                              </thead>
+
+                              <% if (cProfile.length) { %>
+                              <tbody>
+                                <tr>
+                                  <% cProfile.forEach(function (cusProfile, index) { %>
+                                    <td><%= index + 1 %></td>
+                                <!----  <% let i; for(i=1;i>=cusProfile.length;i++){ %>
+                                  <th><%= i %></th>
+                                  <% } %>
+                                  <td>#</td>-->
+                                  <td><%= cusProfile.firstName %></td>
+                                  <td><%= cusProfile.lastName %></td>
+                                  <td><%= cusProfile.gender %></td>
+                                  <td><%= cusProfile.contactNumber %></td>
+                                  <td><%= cusProfile.address[0].city %></td>
+                                  <td><%= cusProfile.address[0].state %></td>
+                                  <td scope="col"><a href="/admin/customerDetails?id=<%= cusProfile._id  %>"><i class="fa fa-forward fa-1x bounce text-danger"></i></a></td>
+                                </tr>
+                                <% } )%>
+                              </tbody>
+                              <% } %>
+                            </table>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>    
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/end.ejs') %>

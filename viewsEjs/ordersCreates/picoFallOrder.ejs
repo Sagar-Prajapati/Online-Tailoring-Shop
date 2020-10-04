@@ -1,0 +1,72 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="">
+        <div class="box col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title text-primary js-scroll-trigger" align="center">Fall & Pico Bidding</h2>
+                    <form method="POST" action="/user/addToCartPicoFall" enctype="multipart/form-data" class="register-form" id="regForm">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="form-title text-primary">Image of Saree</h3>
+                      </div>
+                      <div class="row" style="margin-left: 100px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                              <img src="" id="originalProduct" class="rounded design border border-info"> 
+                            </div>
+                            <div class="row">
+                              <input type="file" id="originalProductUpl2" name="originalProductUpl2" class="rounded" set-to="originalProduct" />
+                          </div>
+                          </div>      
+                          </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="form-title text-primary">Select Your Desired Option That You Want </h3>
+                      </div>
+                      <br/><br/>
+                      <div class="row" style="margin-left: 100px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <label class="container">Fall
+                                  <input type="checkbox" name="SelectedFall" id="SelectedFall" onclick="CheckValue()">
+                                  <span class="checkmark"></span>
+                                </label>
+                                <input type="hidden" name="SelFall" id="SelFall" value="false">	
+                            </div>
+                            <div class="row">
+                                <label class="container">Pico
+                                  <input type="checkbox" name="SelectedPico" id="SelectedPico" onclick="CheckValue()">
+                                  <span class="checkmark"></span>
+                                </label>	
+                                <input type="hidden" name="SelPico" id="SelPico" value="false">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-12">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: left;">
+                              <div class="form-group form-button">
+                                  <input type="submit" name="proceed" id="proceed" class="btn btn-info" value="Add to Cart"/>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: right;">
+                              <div class="form-group form-button">
+                                  <a href="/ordersSer"><input type="button" name="back" id="back" class="btn btn-danger" value="Back"/></a>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

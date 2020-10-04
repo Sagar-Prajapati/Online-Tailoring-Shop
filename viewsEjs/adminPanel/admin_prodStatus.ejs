@@ -1,0 +1,95 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./admin_Navbar') %>
+
+<body id="page-top">
+
+    <div class="bg-danger col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="dashboard">
+            <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+             <div style="float: right;"><a href="/admin/getOrdersUpdated"><i class="fa fa-refresh" style="font-size:large;"></i></a></div>
+                <div class="all-content">
+                    <div class="all-form">
+                        <form method="POST" class="" id="">
+                           <div class="card col-lg-12 col-md-12 col-sm-12 col-12 scroll part" style="height: 460px; overflow-x:scroll">
+                                <div class="card-body">
+                                    <h4 class="card-title text-warning">Received Order</h4>
+                                    <table class="table table-bordered" id="order">
+                                      <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>Order ID</th>
+                                          <th>Service Name</th>
+                                          <th>Date Of Order</th>
+                                          <th>Customer Name/Email Id/Order Address</th>
+                                          <th>Description</th>
+                                          <th>Refrence Image</th>
+                                          <th>Total Rate</th>
+                                          <th>Allocated Delivery Boy</th>
+                                          <th>Allocated Tailor</th>
+                                          <th class="text-success">Accept</th>
+                                          <th class="text-danger">Reject</th>
+                                        </tr>  
+                                      </thead>
+
+                                      <% if (getOrd12.length) { %>
+                                        <tbody>
+                                          <tr>
+                                          <% getOrd12.forEach(function (orders, index) { %>
+                                          <td><%= index + 1 %></td>
+                                          <td><%= orders._id %></td>
+                                          <td><%= orders.orderService %></td>
+                                          <td><%= orders.orderDate %></td>
+                                          <td><%= orders.customerID.firstName %>
+                                              <br>(<%= orders.customerID.emailId %>)
+                                              <br>[<%= orders.customerID.address[0].area %>,
+                                              <%= orders.customerID.address[0].city %>,
+                                              <%= orders.customerID.address[0].state %>,
+                                              <%= orders.customerID.address[0].pincode %>]
+                                          </td>
+                                          <td>
+                                            <% if(orders.orderService==="Blouse") {%>
+                                              front deisgn <img style="width: 60px;height: 60px;" src="/<%= orders.orderedFrontDesign.designImageUrl %>" alt="">
+                                             <br> back design <img style="width: 60px;height: 60px;" src="/<%= orders.orderedBackDesign.designImageUrl %>" alt="">
+                                            <% } else if(orders.orderService==="Pico/Fall"){ %>
+                                            <p></p>
+                                            <% } else if(orders.orderService==="Stitch Old Cloth"){ %>
+                                            <p></p>
+                                            <% } %>
+                                          </td>
+                                          <td class="cart_design">
+                                            <img style="width: 60px;height: 60px;" src="/<%= orders.refrenceSareeImg %>" alt="">
+                                          </td>
+                                          <td><span>&#8377 </span><%= orders.orderTotalRate %></td>
+                                          <% if(orders.allocatedServiceMan==="YES"){ %>
+                                          <th><%= orders.delPersonAllocated.firstName %><br>(<%= orders.delPersonAllocated._id %>)</th>
+                                          <th><%= orders.tailorAllocated.firstName %><br>(<%= orders.tailorAllocated._id %>)</th>
+                                          <td><a href="/admin/acceptOrders?id=<%= orders._id  %>"><i class="fa fa-check fa-1x text-success"></i></a></td>
+                                          <td><a href="/admin/rejectOrders?idR=<%= orders._id  %>" ><i class="fa fa-trash fa-1x text-danger"></i></a></td></td>
+                                            <% } else { %>
+                                          <th>NA</th>
+                                          <th>NA</th>
+                                          <td></td>
+                                          <td><a href="/admin/rejectOrders?idR=<%= orders._id  %>"><i class="fa fa-trash fa-1x text-danger"></i></a></td></td>
+                                              <% } %>
+                                        </tr>
+                                        <% } )%>
+                                      </tbody>
+                                      <% }else{%>
+                                        <tbody><tr>
+                                          <td colspan="12"><h5>No Order Yet</h5></td>
+                                        </tr></tbody>
+                                        <% } %> 
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>    
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/end.ejs') %>

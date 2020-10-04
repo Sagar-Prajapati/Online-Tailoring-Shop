@@ -1,0 +1,5 @@
+{
+    "env":{
+        "DATABASE":"mongodb+srv://DungraTai:DungraTai@cluster0.jyjz3.mongodb.net/DungraTailorProj?retryWrites=true&w=majority"
+    }
+}

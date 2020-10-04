@@ -1,0 +1,114 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./admin_Navbar') %>
+
+<body id="page-top">
+
+    <div class="bg-danger col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="dashboard">
+            <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="all-content">
+                    <div class="all-form">
+                        <h2 class="form-title text-danger">Customer Details</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            <div class="card">
+                                <div class="card-body">
+                                   <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="card-title">First Name</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.firstName %></p> 
+                                        </div> 
+                                         <div class="col-lg-2">
+                                            <p class="card-title">Last Name</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.lastName %></p> 
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="card-title">DOB</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.dateOfBirth %></p> 
+                                        </div> 
+                                         <div class="col-lg-2">
+                                            <p class="card-title">Gender</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.gender %></p> 
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="card-title">Contact</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.contactNumber %></p> 
+                                        </div> 
+                                         <div class="col-lg-2">
+                                            <p class="card-title">Email ID</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.emailId %></p> 
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="card-title">Address</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.address[0].area %></p> 
+                                        </div> 
+                                         <div class="col-lg-2">
+                                            <p class="card-title">Pincode</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.address[0].pincode %></p> 
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="card-title">City</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.address[0].city %></p> 
+                                        </div> 
+                                         <div class="col-lg-2">
+                                            <p class="card-title">State</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.address[0].state %></p> 
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <p class="card-title">Date Of Registration</p> 
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <p class="card-text"><%= cusProfile.DateOfRegistration %></p> 
+                                        </div>    
+                                    </div>
+
+                                </div>
+                            </div>
+                             <div class="part">
+                                <div class="col-lg-4" style="float: right;">
+                                    <button class="btn btn-danger form-control" type="button" onclick="location.href='/admin/customerProfile'">Back</button>            
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+    </div>    
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/end.ejs') %>

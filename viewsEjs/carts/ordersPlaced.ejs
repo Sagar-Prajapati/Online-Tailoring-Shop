@@ -1,0 +1,85 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="cart">
+        <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title" style="color: #5cb85c">Your Placed Orders</h2>                    
+                        <section id="cart_items">            
+                            <div class="table-responsive cart_info">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr class="cart_menu">
+                                            <td>#</td>
+                                            <td>Service</td>
+                                            <td>Order Date</td>
+                                            <td>Description</td>
+                                            <td>Refrence Img</td>
+                                            <td>Total</td>
+                                            <td>Status</td>
+                                        </tr>
+                                    </thead>
+                                          
+                                       
+                                    <tbody>
+                                        <% if (displayOrders.length) { %>
+                                            <% displayOrders.forEach(function (prod, index) { %>
+                                                        <tr>
+                                                            <td><%= index + 1 %></td>
+                                                            <td><%= prod.orderService %></td>
+                                                            <td ><%= prod.orderDate %></td>
+                                                            <td class="cart_description">
+                                                            <% if(prod.orderService==="Blouse") {%>
+                                                                <p>
+                                                                    <%= prod.subServiceOpt %>
+                                                                </p>
+                                                            <% } else if(prod.orderService==="Pico/Fall") { %>
+                                                                <p>
+                                                                  Pico <%= prod.picoSelected %><br>
+                                                                  Fall <%= prod.fallSelected %>
+                                                                </p>
+                                                            <% } else if(prod.orderService==="Stitch Old Cloth") { %>
+                                                                <p>
+                                                                    <%= prod.convertClothOption %>
+                                                                </p>
+                                                            <% }else{ %>
+                                                            <p>no service<p>
+                                                            <% } %>       
+                                                            </td>
+                                                            <td class="cart_design">
+                                                                <img src="/<%= prod.refrenceSareeImg %>" alt="">
+                                                            </td>
+                                                            <td><%= prod.orderTotalRate %></td>
+                                                            <td style="color:crimson;"><%= prod.orderStatus %></td>
+                                                        </tr>
+                                            <% }) %>
+                                         <% } else { %>
+                                            <tr>
+                                                <td colspan="6"><h1>you have not orders anything yet</h1></td>           
+                                            </tr>
+                                     
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </section> <!--/#cart_items-->            
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3" style="float: right;">
+                              <div class="form-group form-button">
+                                  <a href="/getUserHome"><input type="button" name="back" id="back" class="btn btn-danger"
+                                      value="Back"/></a>
+                              </div>
+                          </div>
+                        </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

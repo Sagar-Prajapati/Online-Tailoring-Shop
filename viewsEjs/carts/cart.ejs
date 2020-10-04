@@ -1,0 +1,176 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+    <section class="all col-sm-12" id="cart">
+        <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="all-content">
+                <div class="all-form">
+                    <h2 class="form-title" style="color: #5cb85c">YOUR CART</h2>
+                    
+                        <section id="cart_items">            
+                            <div class="table-responsive cart_info">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr class="cart_menu">
+                                            <td>#</td>
+                                            <td>Service</td>
+                                            <td>Description</td>
+                                            <td>Design</td>
+                                            <td>Refrence Img</td>
+                                            <td>Total</td>
+                                            <td>Order</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                          
+                                       
+                                    <tbody>
+                                        <% if (axt1.length) { %>
+
+                                            <% axt1.forEach(function (prod, index) { %>
+                                         
+                                                                <% if(prod.serviceOpt==="Blouse") {%>
+                                                        <tr>
+                                                            <td><%= index + 1 %></td>
+                                         
+                                                            <td class="cart_product">
+                                                                <h5><%= prod.serviceOpt %></h5>
+                                                            </td>
+                                                            
+                                                            <td class="cart_description">
+                                                                <% if(prod.subServiceOpt==="userfit") {%>
+                                                                <p>You uploaded your fitted blouse for measurements</p>
+                                                                <% }else if(prod.subServiceOpt==="stdsize"){ %>
+                                                                    <p>You Chosen Standard Size to Stitch </p>                                        
+                                                                    <% }else { %>
+                                                                        <p style="text-align: justify;">our Tailor will approach you for Measurement,<br/>
+                                                                            on-<%= prod.userTime.selDate.toDateString()  %> and <%= prod.userTime.selTime%>  </p>
+                                                                        <% } %>
+                                                                    </td>
+                                                            <td class="cart_design">
+                                                                <img src="/<%= prod.frontDesign.designImageUrl %>" alt="">
+                                                                <img src="/<%= prod.backDesign.designImageUrl %>" alt="">
+                                                            </td>
+                                                            <td class="cart_design">
+                                                                <img src="/<%= prod.refrenceSareeImg %>" alt="">
+                                                            </td>
+                                                            
+                                                            <td class="cart_total">
+                                                                <p class="cart_total_price">₹ <%= prod.totalRate %></p>
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <form action="/user/orderFromCart" method="POST">
+                                                                    <input type="hidden" name="ItemToOrder" id="ItemToOrder" value="<%= prod._id %>">
+                                                                    <button type="submit" class="cart_product">Place Order</button>
+                                                                    </form>
+                                                            </td>
+                                                            <td class="cart_delete">
+                                                                <form action="/user/deleteFromCart" method="POST">
+                                                                <input type="hidden" name="ItemToDelete" id="ItemToDelete" value="<%= prod._id %>">
+                                                                <button type="submit" class="cart_quantity_delete"><i class="fa fa-times"></i></button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                            <% }else if(prod.serviceOpt==="Pico/Fall") {%>
+                                                                    <tr>
+                                                                        <td><%= index + 1 %></td>
+      
+                                                                        <td class="cart_product">
+                                                                            <h5><%= prod.serviceOpt %></h5>
+                                                                        </td>
+                                                                        
+                                                                        <td class="cart_description">
+                                                                            <p>You Selected for Pico Fall Service</p>
+                                                                        </td>
+                                                                        <td class="cart_product">
+                                                                            Pico <%= prod.picoSelected %>,
+                                                                            Fall <%= prod.fallSelected %>           
+                                                                        </td>
+                                                                        
+                                                                        <td class="cart_design">
+                                                                            <img src="/<%= prod.refrenceSareeImg %>" alt="">
+                                                                        </td>                                                                        
+                                                                        <td class="cart_total">
+                                                                            <p class="cart_total_price">₹ <%= prod.totalRate %></p>
+                                                                        </td>
+                                                                       
+                                                                        <td>
+                                                                            <form action="/user/orderFromCart" method="POST">
+                                                                                <input type="hidden" name="ItemToOrder" id="ItemToOrder" value="<%= prod._id %>">
+                                                                                <button type="submit" class="cart_product">Place Order</button>
+                                                                                </form>
+                                                                       </td>
+                                                                        <td class="cart_delete"> 
+                                                                            <form action="/user/deleteFromCart" method="POST">
+                                                                                <input type="hidden" name="ItemToDelete" id="ItemToDelete" value="<%= prod._id %>">
+                                                                                <button type="submit" class="cart_quantity_delete"><i class="fa fa-times"></i></button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                            <% }else if(prod.serviceOpt==="Stitch Old Cloth") {%>
+                                                                        <tr>
+                                                                            <td><%= index + 1 %></td>
+      
+                                                                            <td class="cart_product">
+                                                                                <h5><%= prod.serviceOpt %></h5>
+                                                                            </td>
+                                                                            
+                                                                            <td class="cart_description">
+                                                                                <p>You Selected for Stitching your Old Clothes Service</p>
+                                                                            </td>
+                                                                            <td class="cart_product">
+                                                                                Convert To  <%= prod.convertClothOption %>
+                                                                            </td>
+                                                                            
+                                                                            <td class="cart_design">
+                                                                                <img src="/<%= prod.refrenceSareeImg %>" alt="">
+                                                                            </td>
+                                                                            <td class="cart_total">
+                                                                                <p class="cart_total_price">₹ <%= prod.totalRate %></p>
+                                                                            </td>
+                                                                            
+                                                                            <td>
+                                                                                <form action="/user/orderFromCart" method="POST">
+                                                                                    <input type="hidden" name="ItemToOrder" id="ItemToOrder" value="<%= prod._id %>">
+                                                                                    <button type="submit" class="cart_product">Place Order</button>
+                                                                                    </form>
+                                                                              </td>
+                                                                            <td class="cart_delete">
+                                                                                <form action="/user/deleteFromCart" method="POST">
+                                                                                    <input type="hidden" name="ItemToDelete" id="ItemToDelete" value="<%= prod._id %>">
+                                                                                    <button type="submit" class="cart_quantity_delete"><i class="fa fa-times"></i></button>
+                                                                                </form>
+                                                                            </td>
+                                                                        </tr>
+                                            <% }else{  %>
+                                                     <h1>you cart is empty</h1>
+                                            <% } %><% }) %>
+                                         <% } else { %>
+                                            <tr>
+                                                <td colspan="6"><h1>you cart is empty</h1></td>           
+                                            </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </section> <!--/#cart_items-->            
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-3" style="float: right;">
+                              <div class="form-group form-button">
+                                  <a href="/getUserHome"><input type="button" name="back" id="back" class="btn btn-danger"
+                                      value="Back"/></a>
+                              </div>
+                          </div>
+                        </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>    
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

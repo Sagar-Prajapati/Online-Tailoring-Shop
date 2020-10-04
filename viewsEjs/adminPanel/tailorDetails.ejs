@@ -1,0 +1,108 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+
+<%- include('./admin_Navbar') %>
+
+<body id="page-top">
+
+    <div class="bg-danger col-lg-12 col-md-12 col-sm-12 col-12">
+        <section class="all col-sm-12" id="dashboard">
+            <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="all-content">
+                    <div class="all-form">
+                        <h2 class="form-title text-danger">Tailor Joining Request</h2>
+                        <form method="POST" class="register-form" id="">
+                          <div class="scroll">
+                            <table class="table" style="overflow-x:scroll">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">First Name</th>
+                                  <th scope="col">Last Name</th>
+                                  <th scope="col">Gender</th>
+                                  <th scope="col">Contact</th>
+                                  <th scope="col">Email ID</th>
+                                  <th scope="col">Address</th>
+                                  <th scope="col"><i class="fa fa-info-circle fa-1x"></i></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <% if (tailorProfileData.length>0) { %>
+                             
+                                <tr>
+                                  <% tailorProfileData.forEach(function (tailorProfile, index) { %>
+                                    <% if(tailorProfile.tailorStatus==="pending for approval"){ %>
+                                  
+                                  <td><%= tailorProfile.firstName %></td>
+                                  <td><%= tailorProfile.lastName %></td>
+                                  <td><%= tailorProfile.gender %></td>
+                                  <td><%= tailorProfile.contactNumber %></td>
+                                  <td><%= tailorProfile.emailId %></td>
+                                  <td><%= tailorProfile.addressOfTailor[0].area %><br><%= tailorProfile.addressOfTailor[0].city %><br>
+                                     <%= tailorProfile.addressOfTailor[0].state %><br><%= tailorProfile.addressOfTailor[0].pincode %>
+                                  </td>
+                                  <td scope="col"><a href="/admin/tailorAccept?id=<%= tailorProfile._id  %>"><i class="fa fa-check fa-1x text-success"></i></a><br>
+                                    <a href="/admin/tailorReject?id=<%= tailorProfile._id  %>"><i class="fa fa-trash fa-1x text-danger"></i></a></td>
+                                </tr>
+                                <% } %>
+                                <%} )%>
+                              <% } else{ %>
+                                <tr>
+                                  <td colspan="6"><h1>no pending tailors</h1></td>           
+                              </tr>
+                              <% } %>
+                            </tbody>
+                            </table>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                <br>
+                <div class="box_cart col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="all-content">
+                      <div class="all-form">
+                          <h2 class="form-title text-danger">Active Tailors</h2>
+                          <form method="POST" class="register-form" id="">
+                            <div class="scroll">
+                              <table class="table" style="overflow-x:scroll;height: 200px;">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Email ID</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col"><i class="fa fa-info-circle fa-1x"></i></th>
+                                  </tr>
+                                </thead>
+  
+                                <% if (tailorProfileData.length) { %>
+                                <tbody>
+                                  <tr>
+                                    <% tailorProfileData.forEach(function (tailorProfile, index) { %>
+                                      <% if(tailorProfile.tailorStatus==="Approved"){ %>
+                                    <td><%= tailorProfile.firstName %></td>
+                                    <td><%= tailorProfile.lastName %></td>
+                                    <td><%= tailorProfile.gender %></td>
+                                    <td><%= tailorProfile.contactNumber %></td>
+                                    <td><%= tailorProfile.emailId %></td>
+                                    <td><%= tailorProfile.addressOfTailor[0].area %><br><%= tailorProfile.addressOfTailor[0].city %><br>
+                                       <%= tailorProfile.addressOfTailor[0].state %><br><%= tailorProfile.addressOfTailor[0].pincode %>
+                                    </td>
+                                    <td scope="col"><%= tailorProfile.tailorStatus %></tr>
+                                  <% } %>
+                                  <%} )%>
+                                </tbody>
+                                <% } %>
+                              </table>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>  
+          </section>
+    </div>    
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/end.ejs') %>

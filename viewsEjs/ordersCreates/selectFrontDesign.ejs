@@ -1,0 +1,70 @@
+<%- include('../partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<%- include('../partials/userNavbar.ejs')%>
+<div class="bg-secondary col-lg-12 col-md-12 col-sm-12 col-12">
+  
+    <section class="all col-sm-12" id="home"> 
+       <% if (desg.length>0) { %>
+           <div class="grid_sagar">
+               <% for (let design of desg) { %>
+                   <article class="card_sagar product-item_sagar">
+                       <div class="card__image_sagar">
+                           <img src="/<%= design.designImageUrl %>"
+                               alt="<%= design.designImageName %>">
+                       </div>
+                       <div class="card__header_sagar">
+                         <h1 class="product__title_sagar"><%= design.designImageName %></h1>
+                       </div>
+                       <div class="card__content_sagar">
+                           <h6 class="product__price_sagar">Base Price + <br/>₹<%= design.designImageRate %></h6>
+                       </div>
+                       <div class="card__actions_sagar">
+                           <form action="/blouseOrder/selectFront" method="post">
+                            <input type="hidden" name="frontSelectedDesignId" value="<%= frontSelectedDesignId %>" />
+                            <input type="hidden" name="backSelectedDesignId" value="<%= backSelectedDesignId %>" />
+                            <input type="hidden" name="frontSelectedDesign" value="<%= frontSelectedDesign %>" />
+                            <input type="hidden" name="backSelectedDesign" value="<%= backSelectedDesign %>" />
+                               <button class="btn2_sagar" type="submit">Select This</button>
+                               <input type="hidden" name="productId" value="<%= design._id %>">
+                           </form>
+                       </div>
+                   </article>
+               <% } %>
+
+           </div>
+       <% } else { %>
+           <h1>No Products Found!</h1>
+       <% } %>
+    </section>
+    <section  class="pagination_sagar">
+        <% if(currentPage !==1 && previousPage !==1) {%>
+     <a href="/blouseOrder/selFrontDesign?page=1&frontSelectedDesignId=<%= frontSelectedDesignId %>&backSelectedDesignId=<%= backSelectedDesignId %>&frontSelectedDesign=<%= frontSelectedDesign %>&backSelectedDesign=<%= backSelectedDesign %>">1</a>
+      <% } %>
+      <% if(hasPreviousPage){ %>
+        <a href="/blouseOrder/selFrontDesign?page=<%= previousPage %>&frontSelectedDesignId=<%= frontSelectedDesignId %>&backSelectedDesignId=<%= backSelectedDesignId %>&frontSelectedDesign=<%= frontSelectedDesign %>&backSelectedDesign=<%= backSelectedDesign %>"><%= previousPage %></a>
+        <% } %>
+    
+    
+      <a href="/blouseOrder/selFrontDesign?page=<%= currentPage %>&frontSelectedDesignId=<%= frontSelectedDesignId %>&backSelectedDesignId=<%= backSelectedDesignId %>&frontSelectedDesign=<%= frontSelectedDesign %>&backSelectedDesign=<%= backSelectedDesign %>" class="active"><%= currentPage %></a>
+     
+    
+      <% if(hasNextPage){ %>
+        <a href="/blouseOrder/selFrontDesign?page=<%= nextPage %>&frontSelectedDesignId=<%= frontSelectedDesignId %>&backSelectedDesignId=<%= backSelectedDesignId %>&frontSelectedDesign=<%= frontSelectedDesign %>&backSelectedDesign=<%= backSelectedDesign %>"><%= nextPage %></a>
+        <% } %>
+        <% if(lastPage !== currentPage && nextPage != lastPage) { %>
+        <a href="/blouseOrder/selFrontDesign?page=<%= lastPage %>&frontSelectedDesignId=<%= frontSelectedDesignId %>&backSelectedDesignId=<%= backSelectedDesignId %>&frontSelectedDesign=<%= frontSelectedDesign %>&backSelectedDesign=<%= backSelectedDesign %>"><%= lastPage %></a>
+        <% } %>
+    
+    </section> 
+</div> 
+<div class="col-lg-6 col-md-6 col-sm-6 col-6" style="float: right;">
+    <div class="form-group form-button">
+        <a href="/blouseOrder"><input type="button" name="back" id="back" class="btn btn-danger" value="Back"/></a>
+    </div>
+</div>
+  
+
+
+<%- include('../partials/footer.ejs') %>
+<%- include('../partials/end.ejs') %>

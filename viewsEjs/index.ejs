@@ -1,0 +1,228 @@
+<%- include('./partials/head.ejs') %>
+<title><%= pageTitle %></title>
+</head>
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+          <a href="/"><img src="javascript_CSS/img/Logo/DT_main.png" height="80px"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#home">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">SERVICES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#gallary">GALLARY</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/getSignup" style="color: #009900"><i class="fa fa-sign-in" aria-hidden="true"></i> SIGNUP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/getLogin" style="color: #2196f3"><i class="fa fa-sign-in" aria-hidden="true"></i> LOGIN</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead" id="home">
+      <div class="header-content">
+        <div class="header-content-inner">
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#signup" style="margin-top: 500px;"><i class="fa fa-3x fa-chevron-circle-down"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-primary" id="signup">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">  
+            <h2 class="section-heading text-white">Get Register in Dungra Tailors</h2>
+            <hr class="light">
+            <p class="text-faded">Choose-Sew-Drop</p>
+            <a class="btn btn-default btn-xl js-scroll-trigger" href="/getSignup">SIGN UP</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <hr class="light">
+            <p class="text-faded">If Already a User...</p>
+            <a class="btn btn-default btn-xl js-scroll-trigger" href="/getLogin">LOG IN</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">At Your Service</h2>
+            <hr class="primary">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-4 text-center">
+            <div class="service-box">
+              <i class="fa fa-4x fa-tshirt text-primary sr-icons"></i>
+              <h3>Blouse & Kurti</h3>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-4 text-center">
+            <div class="service-box">
+              <i class="fa fa-4x fa-ruler-combined text-primary sr-icons"></i>
+              <h3>Measurement</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-4 text-center">
+            <div class="service-box">
+              <i class="fa fa-4x fa-cut text-primary sr-icons"></i>
+              <h3>Alteration of Old Clothes</h3>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-4 text-center">
+            <div class="service-box">
+              <i class="fa fa-door-open fa-4x text-primary sr-icons"></i>
+              <h3>Tailor At Your Door </h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 text-center">
+          </div>
+          <div class="col-lg-4 col-md-4 text-center">
+            <div class="service-box">
+              <i class="fa fa-4x fa-truck text-primary sr-icons"></i>
+              <h3>Pick Up & Home Delivery</h3>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 text-center">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-0" id="gallary">
+      <div class="container-fluid">
+        <div class="row no-gutter popup-gallery">
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="javascript_CSS/img/portfolio/fullsize/1.jpg">
+              <img class="img-fluid" src="javascript_CSS/img/portfolio/thumbnails/1.jpg" alt="Something went wrong">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="Item-name">
+                    Item Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="javascript_CSS/img/portfolio/fullsize/2.jpg">
+              <img class="img-fluid" src="javascript_CSS/img/portfolio/thumbnails/2.jpg" alt="Something went wrong">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="Item-name">
+                    Item Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="javascript_CSS/img/portfolio/fullsize/3.jpg">
+              <img class="img-fluid" src="javascript_CSS/img/portfolio/thumbnails/3.jpg" alt="Something went wrong">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="Item-name">
+                    Item Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="javascript_CSS/img/portfolio/fullsize/4.jpg">
+              <img class="img-fluid" src="javascript_CSS/img/portfolio/thumbnails/4.jpg" alt="Something went wrong">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="Item-name">
+                    Item Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="javascript_CSS/img/portfolio/fullsize/5.jpg">
+              <img class="img-fluid" src="javascript_CSS/img/portfolio/thumbnails/5.jpg" alt="Something went wrong">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="Item-name">
+                    Item Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="javascript_CSS/img/portfolio/fullsize/6.jpg">
+              <img class="img-fluid" src="javascript_CSS/img/portfolio/thumbnails/6.jpg" alt="Something went wrong">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="Item-name">
+                    Item Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="call-to-action bg-dark">
+      <div class="container text-center">
+        <h2>Choose Your Design & Order</h2>
+        <a class="btn btn-default btn-xl sr-button" href="/getSignup">Start Now!</a>
+      </div>
+    </div>
+
+   <%- include('./partials/footer.ejs') %>
+
+    <%- include('./partials/end.ejs') %>

@@ -1,0 +1,95 @@
+/* Style the form */
+#regForm {
+  background-color: #ffffff;
+  margin: 50px auto;
+  padding: 10px;
+  width: 100%;
+  min-width: 300px;
+}
+
+/* Style the input fields */
+/*input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+/*input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/*Front & Back Design in order Page*/
+.design{
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+}
+.btndesign{
+  margin: 30px;
+}
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+
+#orderbtn{
+  margin-top: 20px;
+}
+#userfitbox{
+  padding: 50px;
+  width: 500px;
+  height: auto;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+#stdsizebox{
+  padding: 50px;
+  width: 500px;
+  height: auto;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+#sendtailorbox{
+  padding: 50px;
+  width: 500px;
+  height: auto;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+#uploadfit{
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+}
+#otherconvertbox{
+   padding: 50px;
+  width: 500px;
+  height: auto;
+  margin-top: 50px;
+  margin-left: 50px;
+}
