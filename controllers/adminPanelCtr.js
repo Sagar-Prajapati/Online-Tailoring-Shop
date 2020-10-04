@@ -60,7 +60,7 @@ exports.postAdminLoginLink = (req,res)=>{
     //Update this URL before uploading to server.
                 html:`
                     <p> This is your Access Link</p>
-                    <p> Click this <a href="http://localhost:3000/admin/accessLink/${adminTokenCreated}" >link</a>
+                    <p> Click this <a href="https://dungratailor-mca.herokuapp.com/admin/accessLink/${adminTokenCreated}" >link</a>
                      to reset your password</p>
                 `
             })

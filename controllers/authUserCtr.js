@@ -93,7 +93,7 @@ exports.postForgotPassword = (req,res)=>{
     //Update this URL before uploading to server.
                 html:`
                     <p> You Requested for Password Reset</p>
-                    <p> Click this <a href="http://localhost:3000/newPassword/${tokenCreated}" >link</a>
+                    <p> Click this <a href="https://dungratailor-mca.herokuapp.com/newPassword/${tokenCreated}" >link</a>
                      to reset your password</p>
                 `
             })
