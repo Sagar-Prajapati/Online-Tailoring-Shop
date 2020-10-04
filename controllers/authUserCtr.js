@@ -13,10 +13,15 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 //displaying index page
 exports.getIndex = (req,res)=>{
+    if(!req.session){
     res.render('index',{
         pageTitle:'Dungra Tailor',
         path:'/'
     });
+    }
+    else{
+        res.redirect('/getUserHome');
+    }
 };
 //displaying signup page
 exports.getSignup = (req,res)=>{
