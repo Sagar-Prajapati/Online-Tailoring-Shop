@@ -9,7 +9,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
-const MONGODB_URI = process.env.DATABASE //'mongodb+srv://DungraTai:DungraTai@cluster0.jyjz3.mongodb.net/DungraTailorProj?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.DATABASE;
 //const MONGODB_URI = 'mongodb://localhost:27017/DungraTailorProj';
 
 const store = new MongoDBStore({
