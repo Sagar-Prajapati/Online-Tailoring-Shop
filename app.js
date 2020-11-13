@@ -10,7 +10,6 @@ const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
 const MONGODB_URI = process.env.DATABASE;
-//const MONGODB_URI = 'mongodb://localhost:27017/DungraTailorProj';
 
 const store = new MongoDBStore({
     uri:MONGODB_URI,
