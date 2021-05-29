@@ -9,13 +9,13 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
-const MONGODB_URI = process.env.DATABASE;
+const MONGODB_URI =
+  'mongodb+srv://Sagar:uFPLxvX82ZqN4QKw@cluster0.noij9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 const store = new MongoDBStore({
-    uri:MONGODB_URI,
-    collection:'UserSession'
+  uri: MONGODB_URI,
+  collection: 'UserSession'
 });
-
 
 const authRoute = require('./routes/authUser');
 const userRoute = require('./routes/userService');
@@ -25,29 +25,36 @@ const adminPanel = require('./routes/adminPanel');
 const tailorRoute = require('./routes/tailorRoute');
 //const csrfProtection = csrf();
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'});
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  { flags: 'a' }
+);
 
-app.set('view engine','ejs');
-app.set('views','viewsEjs');
+app.set('view engine', 'ejs');
+app.set('views', 'viewsEjs');
 app.use(helmet());
 app.use(compression());
-app.use(morgan('combined',{stream:accessLogStream}));
+app.use(morgan('combined', { stream: accessLogStream }));
 
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname,'viewsEjs')));
-app.use('/dsgImg',express.static(path.join(__dirname,'dsgImg')));
-app.use('/userUploadedImages',express.static(path.join(__dirname,'userUploadedImages')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'viewsEjs')));
+app.use('/dsgImg', express.static(path.join(__dirname, 'dsgImg')));
+app.use(
+  '/userUploadedImages',
+  express.static(path.join(__dirname, 'userUploadedImages'))
+);
 
-app.use(session({
-    secret:'Why To Keep Secret',
-    cookie:{
-        maxAge:1000*60*60*3 //session is maintained for 3 hours
+app.use(
+  session({
+    secret: 'Why To Keep Secret',
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 3 //session is maintained for 3 hours
     },
-    store:store,
-    resave:false,
-    saveUninitialized:false
-}));
-
+    store: store,
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
 const PORT = 3000;
 
@@ -58,13 +65,12 @@ app.use(carts);
 app.use(adminPanel);
 app.use(tailorRoute);
 
-
-mongoose.connect(MONGODB_URI,
-    {useNewUrlParser:true,useUnifiedTopology:true})
-    .then(()=>{
-        app.listen(process.env.PORT||PORT); 
-        console.log('connected at port '+PORT);
-    }).catch(err=>{console.log(err)});
-
-
-
+mongoose
+  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    app.listen(process.env.PORT || PORT);
+    console.log('connected at port ' + PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
